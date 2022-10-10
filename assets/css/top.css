@@ -1,0 +1,49 @@
+.app-section-top {
+  background-color: #1e1e1e;
+  height: 100px;
+  /* width: 100vw; */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.app-top-section-menu-delay-container {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.app-top-section-menu-delay-input-secs {
+  width: 40px;
+}
+input#delayInput {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  font-size: 20px;
+  border: 1px solid #d1d1d1;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #2e2e2e;
+  text-align: center;
+}
+.addImgBtn {
+  height: 35px;
+  cursor: pointer;
+}
+.app-top-section-menu-thumb-container {
+  cursor: pointer;
+  height: 80px;
+  background-color: #d9d9d9;
+  width: 143px;
+  margin-left: 20px;
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #bbb;
+}
+.activeThumb {
+  border-color: lime;
+}

@@ -1,0 +1,53 @@
+.app-section-bottom {
+  background-color: #c6c6c6;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-bottom-section-canvas-container {
+  height: 500px;
+  width: 890px;
+  background-color: #d9d9d9;
+  margin-left: 58px;
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 50px 0px #0000004a;
+}
+.app-bottom-section-save-reset-container {
+  background-color: white;
+  padding: 37px 35px;
+  border-radius: 25px 0 0 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 0 0 50px 0px #0000004a;
+}
+.app-bottom-section-save-container {
+  background-color: #5cb404;
+  border-radius: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 55px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+.app-bottom-section-reset-container {
+  border-radius: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px;
+  color: #303030;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #303030;
+}
+input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer;
+}
