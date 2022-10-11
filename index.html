@@ -18,7 +18,10 @@
           class="app-top-section-menu-thumb-container"
           onclick="selectThumb(this);"
         ></div>
-        <div class="app-top-section-menu-add-container">
+        <div
+          class="app-top-section-menu-add-container"
+          onclick="addDisplay(this);"
+        >
           <img
             src="./assets/svg/addcontainer.svg"
             class="addImgBtn"
@@ -49,6 +52,7 @@
               type="file"
               id="uploadBgImg"
               accept="image/png, image/jpeg"
+              onchange="loadFile(event)"
               hidden
             />
           </div>
@@ -98,44 +102,6 @@
         </div>
       </div>
     </div>
-    <script>
-      document
-        .getElementById("uploadBgImg")
-        .addEventListener("change", readURL, true);
-      function readURL() {
-        var file = document.getElementById("uploadBgImg").files[0];
-        var reader = new FileReader();
-        reader.onloadend = function () {
-          $(".activeThumb").css(
-            "background-image",
-            "url(" + reader.result + ")"
-          );
-        };
-        if (file) {
-          reader.readAsDataURL(file);
-        } else {
-        }
-      }
-      function selectThumb(params) {
-        $(".app-top-section-menu-thumb-container").removeClass("activeThumb");
-        // $(".tab").addClass("active"); // instead of this do the below
-        $(params).addClass("activeThumb");
-        var src = $(".activeThumb").css("background-image");
-        src = src.replace("url(", "").replace(")", "").replace(/\"/gi, "");
-        console.log(src);
-        $("#qwe").css("background-image", "url(" + src + ")");
-      }
-      $(".app-top-section-menu-add-container").on("click", function () {
-        $(`<div class="app-top-section-menu-delay-container">
-          <div class="app-top-section-menu-delay-label">Delay</div>
-          <div class="app-top-section-menu-delay-input-secs">
-            <input type="number" name="" id="delayInput" min="0" />
-          </div>
-          <div class="app-top-section-menu-delay-secs-label">Secs</div>
-        </div><div class="app-top-section-menu-thumb-container"  onclick="selectThumb(this);"></div>`).insertBefore(
-          ".app-top-section-menu-add-container"
-        );
-      });
-    </script>
+    <script src="assets/js/customFn.js"></script>
   </body>
 </html>

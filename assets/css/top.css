@@ -1,10 +1,11 @@
 .app-section-top {
   background-color: #1e1e1e;
-  height: 100px;
+  height: 12vh;
   /* width: 100vw; */
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 0 25px;
 }
 .app-top-section-menu-delay-container {
   color: white;
@@ -38,7 +39,6 @@ input#delayInput {
   height: 80px;
   background-color: #d9d9d9;
   width: 143px;
-  margin-left: 20px;
   background-image: url("");
   background-size: cover;
   background-position: center;
