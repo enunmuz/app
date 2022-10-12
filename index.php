@@ -18,7 +18,22 @@
           class="app-top-section-menu-thumb-container"
           onclick="selectThumb(this);"
         >
-          <span class="remove-menu-thumb" onclick="removeDisplay(this);"> </span>
+          <span class="remove-menu-thumb" onclick="removeDisplay(this);">
+          </span>
+        </div>
+        <div class="app-top-section-menu-delay-container">
+          <div class="app-top-section-menu-delay-label">Delay</div>
+          <div class="app-top-section-menu-delay-input-secs">
+            <input
+              class="delayInput"
+              type="number"
+              name=""
+              id="delayInput-${delayInputCounter}"
+              min="1"
+              value="5"
+            />
+          </div>
+          <div class="app-top-section-menu-delay-secs-label">Secs</div>
         </div>
         <div
           class="app-top-section-menu-add-container"
@@ -99,7 +114,9 @@
       <div class="app-section-bottom">
         <div class="app-bottom-section-canvas-container" id="qwe"></div>
         <div class="app-bottom-section-save-reset-container">
-          <div class="app-bottom-section-save-container" onclick="saveData()">Save</div>
+          <div class="app-bottom-section-save-container" onclick="saveData()">
+            Save
+          </div>
           <div class="app-bottom-section-reset-container">Reset All</div>
         </div>
       </div>

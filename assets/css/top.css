@@ -1,11 +1,9 @@
 .app-section-top {
   background-color: #1e1e1e;
-  height: 12vh;
-  /* width: 100vw; */
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 0 25px;
+  padding: 12px 25px;
 }
 .app-top-section-menu-delay-container {
   color: white;
