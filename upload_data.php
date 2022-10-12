@@ -6,7 +6,7 @@ for($i=0;$i<20;$i++){
     if(isset($_FILES["file-".$i]) && isset($_POST["delayInput-".$i])){
         $filename = $_FILES["file-".$i]["name"];
         $tempname = $_FILES["file-".$i]["tmp_name"];
-        $folder = "./uploads/" . $filename;
+        $folder = "db-images/" . $filename;
         $delay = $_POST["delayInput-".$i];
         $user_id = 1;
         // Get all the submitted data from the form
