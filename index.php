@@ -17,7 +17,9 @@
         <div
           class="app-top-section-menu-thumb-container"
           onclick="selectThumb(this);"
-        ></div>
+        >
+          <span class="remove-menu-thumb" onclick="removeDisplay(this);"> </span>
+        </div>
         <div
           class="app-top-section-menu-add-container"
           onclick="addDisplay(this);"

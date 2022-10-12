@@ -43,7 +43,22 @@ input.delayInput {
   background-size: cover;
   background-position: center;
   border: 1px solid #bbb;
+  position: relative;
 }
 .activeThumb {
   border-color: lime;
+}
+.remove-menu-thumb:after {
+  position: absolute;
+  background-color: #3e3e3ed1;
+  padding: 0 3px;
+  color: white;
+  border-radius: 29px;
+  border: 1px solid #cbcaca;
+  right: -8px;
+  top: -8px;
+  box-shadow: rgb(56 56 56 / 93%) 0px 0px 6px 0px;
+  content: "✖";
+  font-size: 10px;
+  cursor: pointer;
 }
