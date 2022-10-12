@@ -28,7 +28,7 @@
               class="delayInput"
               type="number"
               name=""
-              id="delayInput-${delayInputCounter}"
+              id="delayInput-0"
               min="1"
               value="5"
             />

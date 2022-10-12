@@ -27,8 +27,14 @@ function saveData() {
   jQuery.each(images, function (i, file) {
     data.append("file-" + i, file);
   });
-  data.append("delayInput-0", 2000);
 
+  for(let i=0;i<20;i++){
+    if($("#delayInput-"+i).val()){
+      let val = $("#delayInput-"+i).val();
+      data.append('delayInput-'+i, val);
+    }
+  }
+  
   jQuery.ajax({
     url: "upload_data.php",
     data: data,
