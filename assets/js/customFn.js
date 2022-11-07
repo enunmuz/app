@@ -28,13 +28,13 @@ function saveData() {
     data.append("file-" + i, file);
   });
 
-  for(let i=0;i<20;i++){
-    if($("#delayInput-"+i).val()){
-      let val = $("#delayInput-"+i).val();
-      data.append('delayInput-'+i, val);
+  for (let i = 0; i < 20; i++) {
+    if ($("#delayInput-" + i).val()) {
+      let val = $("#delayInput-" + i).val();
+      data.append("delayInput-" + i, val);
     }
   }
-  
+
   jQuery.ajax({
     url: "upload_data.php",
     data: data,
@@ -49,6 +49,16 @@ function saveData() {
   });
 }
 
+$(document).on(
+  "click",
+  ".app-top-section-menu-thumb-container",
+  function (event) {
+    if (event.ctrlKey) {
+      $(this).toggleClass("todElem");
+    }
+  }
+);
+
 function selectThumb(elem) {
   $(".app-top-section-menu-thumb-container").removeClass("activeThumb");
   $(elem).addClass("activeThumb");
@@ -62,17 +72,36 @@ function selectThumb(elem) {
 
 function addDisplay(elem) {
   console.log($(".app-top-section-menu-thumb-container").length);
-  $(`<div class="app-top-section-menu-thumb-container"  onclick="selectThumb(this);">  <span class="remove-menu-thumb" onclick="removeDisplay(this);"> </span></div><div class="app-top-section-menu-delay-container">
-  <div class="app-top-section-menu-delay-container">
-    <div class="app-top-section-menu-delay-label">Delay</div>
-    <div class="app-top-section-menu-delay-input-secs">
-      <input class="delayInput" type="number" name="" id="delayInput-${delayInputCounter}" min="1" value="5" />
-    </div>
-    <div class="app-top-section-menu-delay-secs-label">Secs</div>
-  </div>`).insertBefore(".app-top-section-menu-add-container");
+  $(".app-top-section-menu-thumb-delay-container")
+    .append(`<div class="app-top-thumb-delay-holder">
+<div
+  class="app-top-section-menu-thumb-container"
+  onclick="selectThumb(this);"
+>
+  <span class="remove-menu-thumb" onclick="removeDisplay(this);">
+  </span>
+  <span class="tod-time-thumb"></span>
+</div>
+<div class="app-top-section-menu-delay-container">
+  <div class="app-top-section-menu-delay-label">Delay</div>
+  <div class="app-top-section-menu-delay-input-secs">
+    <input
+      class="delayInput"
+      type="number"
+      name=""
+      id="delayInput-${delayInputCounter}"
+      min="1"
+      value="5"
+    />
+  </div>
+  <div class="app-top-section-menu-delay-secs-label">Secs</div>
+</div>
+</div>`);
   delayInputCounter++;
 }
 function removeDisplay(elem) {
-  $(elem).parent().next("div").remove();
-  $(elem).parent().remove();
+  console.log($(elem).closest(".app-top-thumb-delay-holder"), "jkhghjkhgjkhg");
+  $(elem).closest(".app-top-thumb-delay-holder").remove();
+  // $(elem).parent().next("div").remove();
+  // $(elem).parent().remove();
 }

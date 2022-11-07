@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 12px 25px;
+  padding: 8px 25px;
 }
 .app-top-section-menu-delay-container {
   color: white;
@@ -59,4 +59,68 @@ input.delayInput {
   content: "✖";
   font-size: 10px;
   cursor: pointer;
+}
+.app-top-section-menu-thumb-delay-container {
+  display: flex;
+  gap: 35px;
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+.todElem {
+  border-color: rgb(234, 0, 255);
+}
+.add-section-add-tod {
+  color: white;
+  background-color: #585858;
+  padding: 27px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+.tod-time-thumb {
+  position: absolute;
+  background-color: #3e3e3ed9;
+  padding: 0 3px;
+  color: white;
+  bottom: 0px;
+  font-size: 15px;
+}
+.tod-timer-container {
+  /* height: 100px; */
+  /* width: 100px; */
+  background: white;
+  position: absolute;
+  z-index: 12;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+  gap: 40px;
+  cursor: initial;
+  justify-content: center;
+  box-shadow: 0 0 17px 0px #0000007d;
+  align-items: flex-end;
+}
+.tod-start-time-pick,
+.tod-end-time-pick {
+  color: #00b2db;
+  font-size: 18px;
+}
+button.tod-fetch-time {
+  background-color: #00b6e3;
+  width: 90px;
+  height: 34px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.tod-timer-container-hidden {
+  display: flex;
+}
+.app-top-thumb-delay-holder {
+  display: flex;
+  gap: 20px;
+  border: 1px solid #ffffff66;
+  padding: 8px;
 }

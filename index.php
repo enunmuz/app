@@ -10,41 +10,68 @@
     <link rel="stylesheet" href="assets/css/middle.css" />
     <link rel="stylesheet" href="assets/css/bottom.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   </head>
   <body>
     <div class="app-container">
       <div class="app-section-top">
-        <div
-          class="app-top-section-menu-thumb-container"
-          onclick="selectThumb(this);"
-        >
-          <span class="remove-menu-thumb" onclick="removeDisplay(this);">
-          </span>
-        </div>
-        <div class="app-top-section-menu-delay-container">
-          <div class="app-top-section-menu-delay-label">Delay</div>
-          <div class="app-top-section-menu-delay-input-secs">
-            <input
-              class="delayInput"
-              type="number"
-              name=""
-              id="delayInput-0"
-              min="1"
-              value="5"
-            />
+        <div class="app-section-custom-thumb-options">
+          <div class="addDisplay-cutstom-section">
+            <div
+              class="app-top-section-menu-add-container"
+              onclick="addDisplay(this);"
+            >
+              <img
+                src="./assets/svg/addcontainer.svg"
+                class="addImgBtn"
+                alt=""
+                srcset=""
+              />
+            </div>
           </div>
-          <div class="app-top-section-menu-delay-secs-label">Secs</div>
+        </div>
+        <div class="add-section-add-tod-playlist-container">
+          <div class="add-section-add-tod" onclick="toggleTod();">ADD TOD</div>
+          <div class="tod-timer-container">
+            <div class="tod-start-time-pick">
+              <div class="tod-start-time-pick-label">Start Time</div>
+              <input type="time" id="todStartTime" value="01:00" />
+            </div>
+            <div class="tod-end-time-pick">
+              <div class="tod-end-time-pick-label">End Time</div>
+              <input type="time" id="todEndTime" value="01:00" />
+            </div>
+            <button class="tod-fetch-time" onclick="fetchTod()">Done</button>
+          </div>
         </div>
         <div
-          class="app-top-section-menu-add-container"
-          onclick="addDisplay(this);"
+          class="app-top-section-menu-thumb-delay-container"
+          id="sortableThumbDiv"
         >
-          <img
-            src="./assets/svg/addcontainer.svg"
-            class="addImgBtn"
-            alt=""
-            srcset=""
-          />
+          <div class="app-top-thumb-delay-holder">
+            <div
+              class="app-top-section-menu-thumb-container"
+              onclick="selectThumb(this);"
+            >
+              <span class="remove-menu-thumb" onclick="removeDisplay(this);">
+              </span>
+              <span class="tod-time-thumb"></span>
+            </div>
+            <div class="app-top-section-menu-delay-container">
+              <div class="app-top-section-menu-delay-label">Delay</div>
+              <div class="app-top-section-menu-delay-input-secs">
+                <input
+                  class="delayInput"
+                  type="number"
+                  name=""
+                  id="delayInput-0"
+                  min="1"
+                  value="5"
+                />
+              </div>
+              <div class="app-top-section-menu-delay-secs-label">Secs</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="app-section-middle">
@@ -122,5 +149,21 @@
       </div>
     </div>
     <script src="assets/js/customFn.js"></script>
+    <script>
+      function toggleTod(e) {
+        $(".tod-timer-container").toggleClass("tod-timer-container-hidden");
+      }
+
+      function fetchTod() {
+        var x = document.getElementById("todStartTime").value;
+        var y = document.getElementById("todEndTime").value;
+        console.log(x + " - " + y);
+        $(".tod-timer-container").toggleClass("tod-timer-container-hidden");
+        $(".tod-time-thumb", ".todElem").text(x + " - " + y);
+      }
+      $(function () {
+        $("#sortableThumbDiv").sortable();
+      });
+    </script>
   </body>
 </html>
