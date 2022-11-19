@@ -58,3 +58,11 @@ li {
   src: local(""),
     url("../../assets/fonts/source-sans-pro-v21-latin-900.woff") format("woff");
 }
+.app-tod-popup-overlay {
+  background-color: rgb(0 0 0 / 42%);
+  height: 83vh;
+  width: 100%;
+  position: absolute;
+  top: 17vh;
+  display: none;
+}

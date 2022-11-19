@@ -61,21 +61,30 @@ input.delayInput {
   cursor: pointer;
 }
 .app-top-section-menu-thumb-delay-container {
+  overflow-x: auto;
+  height: 141px;
   display: flex;
-  gap: 35px;
-  padding: 12px 15px;
-  border-radius: 5px;
 }
 .todElem {
   border-color: rgb(234, 0, 255);
 }
 .add-section-add-tod {
   color: white;
-  background-color: #585858;
-  padding: 27px 10px;
-  border-radius: 5px;
+  background-color: #d7a068;
+  padding: 9px;
+  border-radius: 65px;
   cursor: pointer;
   position: relative;
+  text-align: center;
+}
+.add-section-remove-tod {
+  color: white;
+  background-color: #976565;
+  padding: 9px;
+  border-radius: 65px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
 }
 .tod-time-thumb {
   position: absolute;
@@ -85,21 +94,35 @@ input.delayInput {
   bottom: 0px;
   font-size: 15px;
 }
-.tod-timer-container {
+.tod-start-time-pick-info-container,
+.tod-remove-daypart-info-container {
   /* height: 100px; */
   /* width: 100px; */
   background: white;
   position: absolute;
+  top: 170px;
+  left: 253px;
   z-index: 12;
   padding: 15px;
   border-radius: 5px;
   display: none;
-  gap: 40px;
+  gap: 20px;
   cursor: initial;
   justify-content: center;
   box-shadow: 0 0 17px 0px #0000007d;
-  align-items: flex-end;
 }
+.tod-start-time-pick-info-container:after,
+.tod-remove-daypart-info-container:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
+  background: #fff;
+  position: absolute;
+  z-index: -1;
+  top: -10px;
+}
+
 .tod-start-time-pick,
 .tod-end-time-pick {
   color: #00b2db;
@@ -115,12 +138,57 @@ button.tod-fetch-time {
   border-radius: 5px;
   cursor: pointer;
 }
-.tod-timer-container-hidden {
+.tod-remove-time {
+  background-color: #db8282;
+  width: 150px;
+  height: 34px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.tod-start-time-pick-info-container-hidden,
+.tod-remove-daypart-info-container-hidden {
   display: flex;
+  flex-direction: column;
+}
+.tod-timer-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 50px;
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 30px;
+}
+.tod-start-time-pick-info-label,
+.tod-remove-daypart-info-label {
+  color: #6c6c6c;
+  font-size: 15px;
+}
+.tod-start-time-pick-info-label > span,
+.tod-remove-daypart-info-label > span {
+  font-weight: 600;
 }
 .app-top-thumb-delay-holder {
   display: flex;
   gap: 20px;
   border: 1px solid #ffffff66;
   padding: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.app-menu-thumb-delay-container-holder {
+  display: flex;
+  gap: 35px;
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+.sortable-placeholder {
+  border: dashed 2px red;
+}
+.add-section-add-remove-tod-playlist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 140px;
 }

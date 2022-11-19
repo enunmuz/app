@@ -48,14 +48,20 @@ function saveData() {
     },
   });
 }
-
 $(document).on(
   "click",
   ".app-top-section-menu-thumb-container",
   function (event) {
-    if (event.ctrlKey) {
+    if ($(".tod-start-time-pick-info-container-hidden").is(":visible")) {
       $(this).toggleClass("todElem");
+      $(this).removeClass("activeThumb");
+    } else if ($(".tod-remove-daypart-info-container-hidden").is(":visible")) {
+      $(this).toggleClass("todElem");
+      $(this).removeClass("activeThumb");
     }
+    // if (event.ctrlKey) {
+    //   $(this).toggleClass("todElem");
+    // }
   }
 );
 
@@ -72,7 +78,7 @@ function selectThumb(elem) {
 
 function addDisplay(elem) {
   console.log($(".app-top-section-menu-thumb-container").length);
-  $(".app-top-section-menu-thumb-delay-container")
+  $(".app-menu-thumb-delay-container-holder")
     .append(`<div class="app-top-thumb-delay-holder">
 <div
   class="app-top-section-menu-thumb-container"

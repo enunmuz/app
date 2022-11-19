@@ -11,9 +11,16 @@
     <link rel="stylesheet" href="assets/css/bottom.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   </head>
   <body>
     <div class="app-container">
+      <div class="app-tod-popup-overlay"></div>
       <div class="app-section-top">
         <div class="app-section-custom-thumb-options">
           <div class="addDisplay-cutstom-section">
@@ -30,8 +37,49 @@
             </div>
           </div>
         </div>
-        <div class="add-section-add-tod-playlist-container">
-          <div class="add-section-add-tod" onclick="toggleTod();">ADD TOD</div>
+        <div class="add-section-add-remove-tod-playlist-container">
+          <div class="add-section-add-tod-playlist-container">
+            <div class="add-section-add-tod">Add Daypart</div>
+          </div>
+          <div class="add-section-remove-tod-playlist-container">
+            <div class="add-section-remove-tod">Remove Daypart</div>
+          </div>
+        </div>
+        <div
+          class="app-top-section-menu-thumb-delay-container"
+          id="sortableThumbDiv"
+        >
+          <div
+            class="app-menu-thumb-delay-container-holder"
+            id="appSlidesThumb"
+          >
+            <div class="app-top-thumb-delay-holder">
+              <div
+                class="app-top-section-menu-thumb-container"
+                onclick="selectThumb(this);"
+              >
+                <span class="remove-menu-thumb" onclick="removeDisplay(this);">
+                </span>
+                <span class="tod-time-thumb"></span>
+              </div>
+              <div class="app-top-section-menu-delay-container">
+                <div class="app-top-section-menu-delay-label">Delay</div>
+                <div class="app-top-section-menu-delay-input-secs">
+                  <input
+                    class="delayInput"
+                    type="number"
+                    name=""
+                    id="delayInput-0"
+                    min="1"
+                    value="5"
+                  />
+                </div>
+                <div class="app-top-section-menu-delay-secs-label">Secs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tod-start-time-pick-info-container">
           <div class="tod-timer-container">
             <div class="tod-start-time-pick">
               <div class="tod-start-time-pick-label">Start Time</div>
@@ -43,35 +91,19 @@
             </div>
             <button class="tod-fetch-time" onclick="fetchTod()">Done</button>
           </div>
-        </div>
-        <div
-          class="app-top-section-menu-thumb-delay-container"
-          id="sortableThumbDiv"
-        >
-          <div class="app-top-thumb-delay-holder">
-            <div
-              class="app-top-section-menu-thumb-container"
-              onclick="selectThumb(this);"
-            >
-              <span class="remove-menu-thumb" onclick="removeDisplay(this);">
-              </span>
-              <span class="tod-time-thumb"></span>
-            </div>
-            <div class="app-top-section-menu-delay-container">
-              <div class="app-top-section-menu-delay-label">Delay</div>
-              <div class="app-top-section-menu-delay-input-secs">
-                <input
-                  class="delayInput"
-                  type="number"
-                  name=""
-                  id="delayInput-0"
-                  min="1"
-                  value="5"
-                />
-              </div>
-              <div class="app-top-section-menu-delay-secs-label">Secs</div>
-            </div>
+          <div class="tod-start-time-pick-info-label">
+            Select the slides to add Daypart and click on
+            <span>Done</span> button.
           </div>
+        </div>
+        <div class="tod-remove-daypart-info-container">
+          <div class="tod-remove-daypart-info-label">
+            Select the slides to remove Daypart and click on
+            <span>Remove Daypart</span> button.
+          </div>
+          <button class="tod-remove-time" onclick="deleteTod()">
+            Remove Daypart
+          </button>
         </div>
       </div>
       <div class="app-section-middle">
@@ -150,19 +182,92 @@
     </div>
     <script src="assets/js/customFn.js"></script>
     <script>
-      function toggleTod(e) {
-        $(".tod-timer-container").toggleClass("tod-timer-container-hidden");
-      }
+      $(document).click(function (e) {
+        if ($(e.target).is(".add-section-remove-tod")) {
+          $(".tod-remove-daypart-info-container").toggleClass(
+            "tod-remove-daypart-info-container-hidden"
+          );
+          $(".app-tod-popup-overlay").toggle();
+        } else if (
+          !(
+            $(e.target).is(".tod-remove-daypart-info-container-hidden") ||
+            $(e.target).is(".app-top-section-menu-thumb-container")
+          )
+        ) {
+          $(".tod-remove-daypart-info-container-hidden")
+            .children()
+            .click(function (e) {
+              e.stopPropagation();
+            });
+          if ($(".tod-remove-daypart-info-container-hidden").is(":visible")) {
+            $(".tod-remove-daypart-info-container").toggleClass(
+              "tod-remove-daypart-info-container-hidden"
+            );
+            $(".app-top-section-menu-thumb-container").removeClass("todElem");
+            $(".app-tod-popup-overlay").toggle();
+          }
+        }
+
+        if ($(e.target).is(".add-section-add-tod")) {
+          $(".tod-start-time-pick-info-container").toggleClass(
+            "tod-start-time-pick-info-container-hidden"
+          );
+          $(".app-tod-popup-overlay").toggle();
+        } else if (
+          !(
+            $(e.target).is(".tod-start-time-pick-info-container-hidden") ||
+            $(e.target).is(".app-top-section-menu-thumb-container")
+          )
+        ) {
+          $(".tod-start-time-pick-info-container-hidden")
+            .children()
+            .click(function (e) {
+              e.stopPropagation();
+            });
+          if ($(".tod-start-time-pick-info-container-hidden").is(":visible")) {
+            $(".tod-start-time-pick-info-container").toggleClass(
+              "tod-start-time-pick-info-container-hidden"
+            );
+            $(".app-top-section-menu-thumb-container").removeClass("todElem");
+            $(".app-tod-popup-overlay").toggle();
+          }
+        }
+      });
+      // function toggleTod(e) {
+      //   $(".tod-start-time-pick-info-container").toggleClass(
+      //     "tod-start-time-pick-info-container-hidden"
+      //   );
+      // }
 
       function fetchTod() {
         var x = document.getElementById("todStartTime").value;
         var y = document.getElementById("todEndTime").value;
         console.log(x + " - " + y);
-        $(".tod-timer-container").toggleClass("tod-timer-container-hidden");
+        $(".tod-start-time-pick-info-container").toggleClass(
+          "tod-start-time-pick-info-container-hidden"
+        );
+        $(".app-tod-popup-overlay").toggle();
         $(".tod-time-thumb", ".todElem").text(x + " - " + y);
+        $(".app-top-section-menu-thumb-container").removeClass("todElem");
       }
+      function deleteTod() {
+        $(".tod-remove-daypart-info-container").toggleClass(
+          "tod-remove-daypart-info-container-hidden"
+        );
+        $(".app-tod-popup-overlay").toggle();
+        $(".tod-time-thumb", ".todElem").text("");
+        $(".app-top-section-menu-thumb-container").removeClass("todElem");
+      }
+
       $(function () {
-        $("#sortableThumbDiv").sortable();
+        var sortableList = $("#appSlidesThumb");
+        sortableList.sortable({
+          revert: true,
+          scroll: false,
+          cursor: "move",
+          placeholder: "sortable-placeholder",
+        });
+        sortableList.disableSelection();
       });
     </script>
   </body>
