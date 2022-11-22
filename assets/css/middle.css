@@ -3,21 +3,25 @@
   height: 8vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 0 70px;
 }
 .app-middle-section-menu-items-container {
   display: flex;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .app-mid-sect-menu-items {
-  width: 178px;
-  height: 100%;
-  border: 1px solid #ffffff05;
+  width: 160px;
+  height: 77%;
+  border-right: 1px solid #ffffff4d;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 6px;
-  color: #adadad;
+  color: #fbfbfb;
   cursor: pointer;
 }
 .app-middle-section-menu-undo-redo-container {
@@ -35,7 +39,26 @@
 .img-container,
 .text-container,
 .pp-container {
-  display: none;
+  /* display: none; */
+}
+.app-mid-sect-menu-items-bg-icon,
+.app-mid-sect-menu-items-bgimg-icon,
+.app-mid-sect-menu-items-img-icon,
+.app-mid-sect-menu-items-pp-icon,
+.app-mid-sect-menu-items-text-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-mid-sect-menu-items-bg-label,
+.app-mid-sect-menu-items-bgimg-label,
+.app-mid-sect-menu-items-img-label,
+.app-mid-sect-menu-items-pp-label,
+.app-mid-sect-menu-items-text-label {
+  font-size: 14px;
+}
+.app-mid-sect-imgs-icons {
+  height: 65%;
 }
 .bg-container:hover,
 .bgimg-container:hover,
@@ -46,4 +69,36 @@
 }
 .app-mid-sect-menu-items-bgimg-label {
   cursor: pointer;
+}
+.app-middle-section-save-reset-container {
+  display: flex;
+  gap: 20px;
+  height: 77%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+.app-middle-section-save-container {
+  background-color: #5cb404;
+  border-radius: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 23px;
+  color: white;
+  /* font-weight: bold; */
+  font-size: 13px;
+  cursor: pointer;
+}
+.app-middle-section-reset-container {
+  border-radius: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 23px;
+  color: #d9d9d9;
+  /* font-weight: bold; */
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid #d9d9d9;
 }

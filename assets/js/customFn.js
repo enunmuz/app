@@ -4,25 +4,30 @@
 //   .addEventListener("change", readURL, true);
 
 //function to select images only
-var images = [];
+// var images = [];
 var delayInputCounter = 1;
-function loadFile(event) {
-  var src = URL.createObjectURL(event.target.files[0]);
+// function loadFile(event) {
+//   var src = URL.createObjectURL(event.target.files[0]);
 
-  // var file = document.getElementById("uploadBgImg").files[0];
-  // var reader = new FileReader();
-  // reader.onloadend = function () {
-  images.push(event.target.files[0]);
-  $(".activeThumb").css("background-image", "url(" + src + ")");
-  var canvasSrc = $(".activeThumb").css("background-image");
-  canvasSrc = canvasSrc
-    .replace("url(", "")
-    .replace(")", "")
-    .replace(/\"/gi, "");
-  $("#qwe").css("background-image", "url(" + canvasSrc + ")");
-}
+//   // var file = document.getElementById("uploadBgImg").files[0];
+//   // var reader = new FileReader();
+//   // reader.onloadend = function () {
+//   images.push(event.target.files[0]);
+//   $(".activeThumb").css("background-image", "url(" + src + ")");
+//   var canvasSrc = $(".activeThumb").css("background-image");
+//   canvasSrc = canvasSrc
+//     .replace("url(", "")
+//     .replace(")", "")
+//     .replace(/\"/gi, "");
+//   $("#qwe").css("background-image", "url(" + canvasSrc + ")");
+// }
 
 function saveData() {
+  var x = document.getElementById("app-success-snackbar");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
   var data = new FormData();
   jQuery.each(images, function (i, file) {
     data.append("file-" + i, file);
@@ -64,17 +69,6 @@ $(document).on(
     // }
   }
 );
-
-function selectThumb(elem) {
-  $(".app-top-section-menu-thumb-container").removeClass("activeThumb");
-  $(elem).addClass("activeThumb");
-  var canvasSrc = $(".activeThumb").css("background-image");
-  canvasSrc = canvasSrc
-    .replace("url(", "")
-    .replace(")", "")
-    .replace(/\"/gi, "");
-  $("#qwe").css("background-image", "url(" + canvasSrc + ")");
-}
 
 function addDisplay(elem) {
   console.log($(".app-top-section-menu-thumb-container").length);

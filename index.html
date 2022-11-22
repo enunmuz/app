@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="assets/css/bottom.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="assets/js/canvas.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
@@ -21,6 +23,7 @@
   <body>
     <div class="app-container">
       <div class="app-tod-popup-overlay"></div>
+      <div id="app-success-snackbar">Canvas Updated Successfully..</div>
       <div class="app-section-top">
         <div class="app-section-custom-thumb-options">
           <div class="addDisplay-cutstom-section">
@@ -55,7 +58,7 @@
           >
             <div class="app-top-thumb-delay-holder">
               <div
-                class="app-top-section-menu-thumb-container"
+                class="app-top-section-menu-thumb-container activeThumb"
                 onclick="selectThumb(this);"
               >
                 <span class="remove-menu-thumb" onclick="removeDisplay(this);">
@@ -110,13 +113,23 @@
         <div class="app-middle-section-menu-items-container">
           <div class="app-mid-sect-menu-items bg-container">
             <div class="app-mid-sect-menu-items-bg-icon">
-              <img src="./assets/svg/bg.svg" alt="" srcset="" />
+              <img
+                class="app-mid-sect-imgs-icons"
+                src="./assets/svg/bg.svg"
+                alt=""
+                srcset=""
+              />
             </div>
-            <div class="app-mid-sect-menu-items-bg-label">BACKGROUND</div>
+            <div class="app-mid-sect-menu-items-bg-label">BACKGROUND COLOR</div>
           </div>
           <div class="app-mid-sect-menu-items bgimg-container">
             <div class="app-mid-sect-menu-items-bgimg-icon">
-              <img src="./assets/svg/bgimg.svg" alt="" srcset="" />
+              <img
+                class="app-mid-sect-imgs-icons"
+                src="./assets/svg/bgimg.svg"
+                alt=""
+                srcset=""
+              />
             </div>
             <label for="uploadBgImg" class="app-mid-sect-menu-items-bgimg-label"
               >BACKGROUND IMAGE</label
@@ -134,19 +147,40 @@
           </div>
           <div class="app-mid-sect-menu-items img-container">
             <div class="app-mid-sect-menu-items-img-icon">
-              <img src="./assets/svg/img.svg" alt="" srcset="" />
+              <img
+                class="app-mid-sect-imgs-icons"
+                src="./assets/svg/img.svg"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="app-mid-sect-menu-items-img-label">IMAGE</div>
           </div>
-          <div class="app-mid-sect-menu-items text-container">
+          <div
+            class="app-mid-sect-menu-items text-container"
+            onclick="addTextContainer(this)"
+          >
             <div class="app-mid-sect-menu-items-text-icon">
-              <img src="./assets/svg/text.svg" alt="" srcset="" />
+              <img
+                class="app-mid-sect-imgs-icons"
+                src="./assets/svg/text.svg"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="app-mid-sect-menu-items-text-label">TEXT</div>
           </div>
-          <div class="app-mid-sect-menu-items pp-container">
+          <div
+            class="app-mid-sect-menu-items pp-container"
+            onclick="addTextContainer(this)"
+          >
             <div class="app-mid-sect-menu-items-pp-icon">
-              <img src="./assets/svg/pp.svg" alt="" srcset="" />
+              <img
+                class="app-mid-sect-imgs-icons"
+                src="./assets/svg/pp.svg"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="app-mid-sect-menu-items-pp-label">PRODUCT PRICE</div>
           </div>
@@ -169,14 +203,100 @@
             />
           </div>
         </div>
-      </div>
-      <div class="app-section-bottom">
-        <div class="app-bottom-section-canvas-container" id="qwe"></div>
-        <div class="app-bottom-section-save-reset-container">
-          <div class="app-bottom-section-save-container" onclick="saveData()">
+        <div class="app-middle-section-save-reset-container">
+          <div class="app-middle-section-save-container" onclick="saveData()">
             Save
           </div>
-          <div class="app-bottom-section-reset-container">Reset All</div>
+          <div class="app-middle-section-reset-container">Reset All</div>
+        </div>
+      </div>
+      <div class="app-section-bottom">
+        <div class="app-bottom-section-canvas-container">
+          <div id="container"></div>
+        </div>
+        <div class="app-bottom-section-canvas-quill-container">
+          <div class="app-bottom-section-canvas-quill-all-elems">
+            <div class="app-bottom-section-canvas-quill text-align-quill">
+              <img
+                height="17px"
+                src="./assets/svg/left-align.svg"
+                alt=""
+                srcset=""
+              />
+              <div class="text-align-quill-text-align-container">
+                <div class="text-align-quill-text-align-elems">
+                  <div class="text-align-quill-left-align">
+                    <img
+                      height="17px"
+                      src="./assets/svg/left-align.svg"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
+                  <div class="text-align-quill-center-align">
+                    <img
+                      height="17px"
+                      src="./assets/svg/justify-align.svg"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
+                  <div class="text-align-quill-right-align">
+                    <img
+                      height="17px"
+                      src="./assets/svg/right-align.svg"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-bottom-section-canvas-quill text-bold-quill">
+              <img
+                height="17px"
+                src="./assets/svg/format-bold.svg"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div class="app-bottom-section-canvas-quill text-italics-quill">
+              <img
+                height="17px"
+                src="./assets/svg/format-italic.svg"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div class="app-bottom-section-canvas-quill text-size-quill">
+              <img
+                height="17px"
+                src="./assets/svg/text-size.svg"
+                alt=""
+                srcset=""
+              />
+              <div class="text-size-quill-font-size-container">
+                <div class="text-size-quill-font-size-elem">
+                  <div class="text-size-quill-font-size-label">Font size</div>
+                  <input
+                    class="font-size-quill"
+                    type="number"
+                    name=""
+                    min="1"
+                    value="12"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="app-bottom-section-canvas-quill font-family-quill">
+              <img
+                height="17px"
+                src="./assets/svg/font-family.svg"
+                alt=""
+                srcset=""
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -233,11 +353,6 @@
           }
         }
       });
-      // function toggleTod(e) {
-      //   $(".tod-start-time-pick-info-container").toggleClass(
-      //     "tod-start-time-pick-info-container-hidden"
-      //   );
-      // }
 
       function fetchTod() {
         var x = document.getElementById("todStartTime").value;
@@ -270,5 +385,6 @@
         sortableList.disableSelection();
       });
     </script>
+    <script src="assets/js/canvasProp.js"></script>
   </body>
 </html>
